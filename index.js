@@ -62,9 +62,10 @@ function healthz() {
 
 function sendSMS(to, message, count = 0) {
     return new Promise(async (resolve, reject) => {
-        if(count > 3) return reject('Max retry')
+        if(count > 5) return console.error('Max retry')
         if (!(await healthz())) {
             console.error('Modem is not healthy')
+            await initModem();
             return sendSMS(to, message, count + 1)
         }
         modem.sendSMS(to, message, false, (res, err) => {
