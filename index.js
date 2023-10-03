@@ -28,6 +28,7 @@ async function initModem() {
         console.info('Modem is ready')
     } catch (error) {
         console.error('Modem connection error')
+        console.error(error)
     }
 }
 
@@ -62,7 +63,7 @@ function healthz() {
 
 function sendSMS(to, message, count = 0) {
     return new Promise(async (resolve, reject) => {
-        if(count > 5) return console.error('Max retry')
+        if (count > 5) return console.error('Max retry')
         if (!(await healthz())) {
             console.error('Modem is not healthy')
             await initModem();
