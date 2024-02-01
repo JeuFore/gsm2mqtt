@@ -14,7 +14,7 @@
   "author": "Jeufore",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.1",
     "mqtt": "^5.3.4",
     "serialport-gsm": "^4.0.1"
   },
